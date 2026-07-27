@@ -3,9 +3,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void wait(int segundos) {
+    public static void wait(int seconds) {
         try {
-            TimeUnit.SECONDS.sleep(segundos);}
+            TimeUnit.SECONDS.sleep(seconds);}
         catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -22,31 +22,19 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        /*
-        int age = 17;
-        double weight = 59.00;
-        char K = 'K';
-        char g = 'g';
-        boolean isStudent = true;
-
-        if (isStudent) {
-            String student = "Augusto";
-            System.out.println("Hello, " + student + "!");
-            System.out.println("You are a student!");
-
-        } else {
-            String person = "Maria";
-            System.out.println("You aren't a student " + person + "!");
-        }
-         */
-
+        Scanner myObj = new Scanner(System.in);
+        String[] listQuestions = {"The Eucharist is my highway to heaven",
+                "A joyful heart is more easily made perfect than a downcast one.",
+                "Education is a matter of the heart",
+                "Verso l'alto"
+        };
         // QUIZ ABOUT YOUNG AND JOYFUL SAINTS!!!
         System.out.println("----- QUIZ ABOUT YOUNG AND JOYFUL SAINTS!!! -----");
-        Scanner myObj = new Scanner(System.in);
 
-        System.out.println("Hello, what's your name? ");
-        String name = myObj.nextLine();
+        System.out.print("Hello, what's your name? ");
+        String name = myObj.next();
+
+        // add int age here
 
         // add exceptions later with try-catch structure here
         wait(2);
@@ -59,17 +47,13 @@ public class Main {
 
         wait(2);
 
-        String[] listQuestions = {"The Eucharist is my highway to heaven",
-                "A joyful heart is more easily made perfect than a downcast one.",
-                "Education is a matter of the heart",
-                "Verso l'alto"
-        };
-
         // first question
-        System.out.println("So, first question... which saint said that: '" + listQuestions[0] + "'?");
+        wait(2);
+        System.out.println("So, first question... \nwhich saint said that: '" + listQuestions[0] + "'?");
         forQuestions();
 
-        String firstResponse = myObj.nextLine();
+        System.out.print("Your response: ");
+        String firstResponse = myObj.next();
 
         if ("A".equals(firstResponse)) {
             wait(2);
@@ -80,10 +64,12 @@ public class Main {
         }
 
         // second question
+        wait(2);
         System.out.println("Now, second question... \nWhich saint said that: '" + listQuestions[1] + "'?");
         forQuestions();
 
-        String secondResponse = myObj.nextLine();
+        System.out.print("Your response: ");
+        String secondResponse = myObj.next();
 
         if ("C".equals(secondResponse)) {
             wait(2);
@@ -93,6 +79,37 @@ public class Main {
             System.out.println("You are wrong... but don't be sad, for St. Philip Neri was known as the Saint of Joy.");
         }
 
+        // third question
+        wait(2);
+        System.out.println("Third question already? Wow, we're moving fast! Alright, here goes: \nWhich saint said that: '" + listQuestions[2] + "'?");
+        forQuestions();
+
+        System.out.print("Your response: ");
+        String thirdResponse = myObj.next();
+
+        if ("D".equals(thirdResponse)) {
+            wait(2);
+            System.out.println("Ooh! You're right! St. John Bosco (Dom Bosco) loves young people very much and used to say these words.");
+        } else {
+            wait(2);
+            System.out.println("Oh no... Actually, that phrase was from Saint John Bosco, a saint who loved young people and valued their education.");
+        }
+
+        // fourth question
+        wait(2);
+        System.out.println("Fourth question... \nWhich saint said that: '" + listQuestions[3] + "'?");
+        forQuestions();
+
+        System.out.print("Your response: ");
+        String fourthResponse = myObj.next();
+
+        if ("B".equals(fourthResponse)) {
+            wait(2);
+            System.out.println("Sì, mio giovane amico, sì. You're absolutely right. St. Pier Giorgio Frassati had this motto: 'Verso l'alto'!");
+        } else {
+            wait(2);
+            System.out.println("Oh no... You're wrong... Actually, it was St. Pier Giorgio Frassati who said that.");
+        }
     }
 
 }
