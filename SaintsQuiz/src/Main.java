@@ -55,7 +55,7 @@ public class Main {
         System.out.print("Your response: ");
         String firstResponse = myObj.next();
 
-        if ("A".equals(firstResponse)) {
+        if ("A".equalsIgnoreCase(firstResponse)) {
             wait(2);
             System.out.println("Yesss! You are absolutely right. St. Carlo Acutis was passionate about the Eucharist, and it was the center of his life.");
         } else {
@@ -71,7 +71,7 @@ public class Main {
         System.out.print("Your response: ");
         String secondResponse = myObj.next();
 
-        if ("C".equals(secondResponse)) {
+        if ("C".equalsIgnoreCase(secondResponse)) {
             wait(2);
             System.out.println("Woww, you're right. St. Philip Neri was very cheerful and was known as the \"Apostle of Rome\". I hope his joy is contagious to you!\n");
         } else {
@@ -87,7 +87,7 @@ public class Main {
         System.out.print("Your response: ");
         String thirdResponse = myObj.next();
 
-        if ("D".equals(thirdResponse)) {
+        if ("D".equalsIgnoreCase(thirdResponse)) {
             wait(2);
             System.out.println("Ooh! You're right! St. John Bosco (Dom Bosco) loves young people very much and used to say these words.");
         } else {
@@ -103,7 +103,7 @@ public class Main {
         System.out.print("Your response: ");
         String fourthResponse = myObj.next();
 
-        if ("B".equals(fourthResponse)) {
+        if ("B".equalsIgnoreCase(fourthResponse)) {
             wait(2);
             System.out.println("Sì, mio giovane amico, sì. You're absolutely right. St. Pier Giorgio Frassati had this motto: 'Verso l'alto'!");
         } else {
