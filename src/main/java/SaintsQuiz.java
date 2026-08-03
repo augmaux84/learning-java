@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Main {
+public class SaintsQuiz {
 
     public static void wait(int seconds) {
         try {
