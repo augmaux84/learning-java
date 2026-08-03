@@ -18,6 +18,6 @@ public class CreditAnalysisApp {
         System.out.print("Do you have any negative records with SPC/Serasa? ");
         boolean userRestriction = Boolean.parseBoolean(myObj.next());
 
-
+        // continue
     }
 }
