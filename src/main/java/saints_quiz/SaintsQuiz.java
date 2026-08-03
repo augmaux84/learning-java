@@ -1,3 +1,5 @@
+package saints_quiz;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
