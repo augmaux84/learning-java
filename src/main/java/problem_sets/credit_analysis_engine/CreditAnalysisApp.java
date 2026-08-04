@@ -20,32 +20,38 @@ public class CreditAnalysisApp {
         int select;
 
         do {
-            System.out.print("--- ITAÚ BANK --- \n1. Start simulation \n2. About the system \n3. Exit\n");
+            System.out.print("--- ITAÚ UNIBANCO --- \n1. Start simulation \n2. About the system \n3. Exit\n");
             select = myObj.nextInt();
+            myObj.nextLine(); // consume Enter - remove this later
 
-            // continue with switch-case and while
             switch (select) {
                 case 1:
                     System.out.print("What is your full name? ");
-                    String userName = myObj.next();
+                    String userName = myObj.useDelimiter("\n").next();
 
                     System.out.print("How old are you? ");
                     int userAge = Integer.parseInt(myObj.next());
-                    // edge case - impossible age
+                    if (userAge < 0 || userAge > 120) {
+                        System.out.println("Validation Error: Incompatible age");
+                        break; // remover this later - refactor:
+                    } else { // nothing
+                    }
 
                     System.out.print("What is your monthly income? $");
                     double userMonthlyIncome = myObj.nextDouble();
-                    // edge case - negative income
+                    if (userMonthlyIncome < 0) {
+                        System.out.println("Fraud attempt or typing error");
+                        break;
+                    } else { // nothing
+                    }
 
                     // if String -> boolean
                     System.out.printf("%s, do you have any negative records with SPC/Serasa [true/false]? ", userName); // true/false -> y/n
                     boolean userRestriction = myObj.nextBoolean();
 
-                    if (!userRestriction && (userAge >= 18)) {
-                        validation(userMonthlyIncome, userName);
-                    } else if (userRestriction) {
+                    if (userRestriction) {
                         System.out.printf("%s, you have a negative credit history with Serasa/SPC and cannot access your Itaú account.\n", userName);
-                    } else { // refactor using userAge >= 18 || isEmancipatedClient
+                    } else if (userAge < 18) {
                         System.out.printf("%s, are you an emancipated client [true/false]? ", userName); // true/false -> y/n
 
                         // if String -> boolean
@@ -56,14 +62,20 @@ public class CreditAnalysisApp {
                         } else {
                             System.out.printf("%s, you cannot access your Itaú account because you are under 18 and not an emancipated client.\n", userName);
                         }
+                    } else {
+                        validation(userMonthlyIncome, userName);
                     }
+
                     break;
+
                 case 2:
                     System.out.print("...\n");
+                    break;
 
                 case 3:
                     break;
-                }
+            }
+                    break;
             } while (select != 3);
         }
 
