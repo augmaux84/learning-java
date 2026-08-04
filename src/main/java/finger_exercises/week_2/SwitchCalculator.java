@@ -36,12 +36,11 @@ public class SwitchCalculator {
             case "/":
                 if (secondNumber == 0) {
                     System.out.print("Operation not accepted, as the divisor can't be 0.");
-                    break;
                 } else {
                     double resultDivision = firstNumber/secondNumber;
                     System.out.print(resultDivision);
-                    break;
                 }
+                break;
 
             default:
                 System.out.print("Operation not found.");
