@@ -27,9 +27,7 @@ public class CreditAnalysisApp {
             switch (select) {
                 case 1:
 
-                    boolean validData = true;
-
-                    do {
+                    while (true) {
                         System.out.print("What is your full name? ");
                         String userName = myObj.useDelimiter("\n").next();
 
@@ -48,21 +46,28 @@ public class CreditAnalysisApp {
                         }
 
                         System.out.printf("%s, do you have any negative records with SPC/Serasa [y/n]? ", userName); // true/false -> y/n
-                        boolean userRestriction = Boolean.parseBoolean(myObj.next());
+                        String userRestriction = myObj.next();
                         // boolean userRestriction = Boolean.parseBoolean(myObj.next());
 
-                        if (userRestriction) {
+                        // a boolean is not necessary in this case.
+                        if (userRestriction.equalsIgnoreCase("y")) {
                             System.out.printf("%s, you have a negative credit history with Serasa/SPC and cannot access your Itaú account.\n", userName);
                             break;
-                        }
+                        } else if (!userRestriction.equalsIgnoreCase("n")) {
+                            System.out.println("Invalid data");
+                            break;
+                        } else {}
 
                         if (userAge < 18) {
-                            System.out.printf("%s, are you an emancipated client [true/false]? ", userName); // true/false -> y/n
-                            // if String -> boolean
-                            boolean isEmancipatedClient = myObj.nextBoolean();
+                            System.out.printf("%s, are you an emancipated client [y/n]? ", userName); // true/false -> y/n
+                            String isEmancipatedClient = myObj.next();
 
-                            if (!isEmancipatedClient) {
+                            // a boolean is not necessary in this case.
+                            if (isEmancipatedClient.equalsIgnoreCase("n")) {
                                 System.out.printf("%s, you cannot access your Itaú account because you are under 18 and not an emancipated client.\n", userName);
+                                break;
+                            } else if (!isEmancipatedClient.equalsIgnoreCase("y")) {
+                                System.out.println("Invalid data");
                                 break;
                             } else {
                                 validation(userMonthlyIncome, userName); // error
@@ -71,11 +76,8 @@ public class CreditAnalysisApp {
                         }
                         validation(userMonthlyIncome, userName);
                         break;
-
-                    } while (validData);
-
+                    }
                     break;
-                // myObj.reset();
                 case 2:
                     System.out.print("We are the largest Brazilian private bank by market value—valued at US$ 8.6 billion according to Brand Finance’s 2025 \"Brazil 100\" ranking. \nWith an extensive product portfolio and through our brands and commercial partnerships, we offer a wide range of services across multiple channels, operating as a full-service, universal bank.\n");
                     break;
