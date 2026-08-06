@@ -68,26 +68,28 @@ public class CreditAnalysisApp {
                                 validation(userMonthlyIncome, userName); // error
                                 break;
                             }
-                        } while (validData);
-
+                        }
+                        validation(userMonthlyIncome, userName);
                         break;
-                        // myObj.reset();
 
-                    } while (select != 3);
+                    } while (validData);
+
                     break;
-
+                // myObj.reset();
                 case 2:
                     System.out.print("We are the largest Brazilian private bank by market value—valued at US$ 8.6 billion according to Brand Finance’s 2025 \"Brazil 100\" ranking. \nWith an extensive product portfolio and through our brands and commercial partnerships, we offer a wide range of services across multiple channels, operating as a full-service, universal bank.\n");
                     break;
 
                 case 3:
                     break;
+
+                default:
+                    System.out.println("Invalid data.");
+
             }
         } while (select != 3);
-
     }
-
-    public static void main(String[]args){
+    public static void main(String[] args){
         menu();
     }
 }
