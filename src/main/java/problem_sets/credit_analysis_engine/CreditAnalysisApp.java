@@ -16,38 +16,37 @@ public class CreditAnalysisApp {
 
     public static void menu() {
         Scanner myObj = new Scanner(System.in);
+        myObj.useDelimiter("\n");
 
         int select;
 
         do {
             System.out.print("--- ITAÚ UNIBANCO --- \n1. Start simulation \n2. About the system \n3. Exit\n");
             select = myObj.nextInt();
-            // myObj.nextLine(); // consume Enter - remove this later
 
             switch (select) {
                 case 1:
 
                     while (true) {
                         System.out.print("What is your full name? ");
-                        String userName = myObj.useDelimiter("\n").next();
+                        String userName = myObj.next().trim();
 
                         System.out.print("How old are you? ");
-                        int userAge = Integer.parseInt(myObj.next());
+                        int userAge = Integer.parseInt(myObj.next().trim());
                         if (userAge < 0 || userAge > 120) {
                             System.out.println("Validation Error: Incompatible age");
                             break;
                         }
 
                         System.out.print("What is your monthly income? $");
-                        double userMonthlyIncome = Double.parseDouble(myObj.next());
+                        double userMonthlyIncome = Double.parseDouble(myObj.next().trim());
                         if (userMonthlyIncome < 0) {
                             System.out.println("Fraud attempt or typing error");
                             break;
                         }
 
                         System.out.printf("%s, do you have any negative records with SPC/Serasa [y/n]? ", userName); // true/false -> y/n
-                        String userRestriction = myObj.next();
-                        // boolean userRestriction = Boolean.parseBoolean(myObj.next());
+                        String userRestriction = myObj.next().trim();
 
                         // a boolean is not necessary in this case.
                         if (userRestriction.equalsIgnoreCase("y")) {
@@ -60,7 +59,7 @@ public class CreditAnalysisApp {
 
                         if (userAge < 18) {
                             System.out.printf("%s, are you an emancipated client [y/n]? ", userName); // true/false -> y/n
-                            String isEmancipatedClient = myObj.next();
+                            String isEmancipatedClient = myObj.next().trim();
 
                             // a boolean is not necessary in this case.
                             if (isEmancipatedClient.equalsIgnoreCase("n")) {
@@ -91,6 +90,7 @@ public class CreditAnalysisApp {
             }
         } while (select != 3);
     }
+
     public static void main(String[] args){
         menu();
     }
