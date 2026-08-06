@@ -26,56 +26,68 @@ public class CreditAnalysisApp {
 
             switch (select) {
                 case 1:
-                    System.out.print("What is your full name? ");
-                    String userName = myObj.useDelimiter("\n").next();
 
-                    System.out.print("How old are you? ");
-                    int userAge = Integer.parseInt(myObj.next());
-                    if (userAge < 0 || userAge > 120) {
-                        System.out.println("Validation Error: Incompatible age");
-                    } else {
+                    boolean validData = true;
+
+                    do {
+                        System.out.print("What is your full name? ");
+                        String userName = myObj.useDelimiter("\n").next();
+
+                        System.out.print("How old are you? ");
+                        int userAge = Integer.parseInt(myObj.next());
+                        if (userAge < 0 || userAge > 120) {
+                            System.out.println("Validation Error: Incompatible age");
+                            break;
+                        }
+
                         System.out.print("What is your monthly income? $");
                         double userMonthlyIncome = Double.parseDouble(myObj.next());
                         if (userMonthlyIncome < 0) {
                             System.out.println("Fraud attempt or typing error");
-                        } else {
-                            // if String -> boolean
-                            System.out.printf("%s, do you have any negative records with SPC/Serasa [true/false]? ", userName); // true/false -> y/n
-                            boolean userRestriction = Boolean.parseBoolean(myObj.next());
-
-                            if (userRestriction) {
-                                System.out.printf("%s, you have a negative credit history with Serasa/SPC and cannot access your Itaú account.\n", userName);
-                            } else if (userAge < 18) {
-                                System.out.printf("%s, are you an emancipated client [true/false]? ", userName); // true/false -> y/n
-
-                                // if String -> boolean
-                                boolean isEmancipatedClient = myObj.nextBoolean();
-
-                                if (isEmancipatedClient) {
-                                    validation(userMonthlyIncome, userName);
-                                } else {
-                                    System.out.printf("%s, you cannot access your Itaú account because you are under 18 and not an emancipated client.\n", userName);
-                                }
-                            } else {
-                                validation(userMonthlyIncome, userName);
-                            }
+                            break;
                         }
 
-                    }
+                        System.out.printf("%s, do you have any negative records with SPC/Serasa [y/n]? ", userName); // true/false -> y/n
+                        boolean userRestriction = Boolean.parseBoolean(myObj.next());
+                        // boolean userRestriction = Boolean.parseBoolean(myObj.next());
+
+                        if (userRestriction) {
+                            System.out.printf("%s, you have a negative credit history with Serasa/SPC and cannot access your Itaú account.\n", userName);
+                            break;
+                        }
+
+                        if (userAge < 18) {
+                            System.out.printf("%s, are you an emancipated client [true/false]? ", userName); // true/false -> y/n
+                            // if String -> boolean
+                            boolean isEmancipatedClient = myObj.nextBoolean();
+
+                            if (!isEmancipatedClient) {
+                                System.out.printf("%s, you cannot access your Itaú account because you are under 18 and not an emancipated client.\n", userName);
+                                break;
+                            } else {
+                                validation(userMonthlyIncome, userName); // error
+                                break;
+                            }
+                        } while (validData);
+
+                        break;
+                        // myObj.reset();
+
+                    } while (select != 3);
                     break;
-                    // myObj.reset();
 
                 case 2:
-                    System.out.print("...\n");
+                    System.out.print("We are the largest Brazilian private bank by market value—valued at US$ 8.6 billion according to Brand Finance’s 2025 \"Brazil 100\" ranking. \nWith an extensive product portfolio and through our brands and commercial partnerships, we offer a wide range of services across multiple channels, operating as a full-service, universal bank.\n");
                     break;
 
                 case 3:
                     break;
-                }
-            } while (select != 3);
-        }
+            }
+        } while (select != 3);
 
-    public static void main(String[] args) {
+    }
+
+    public static void main(String[]args){
         menu();
     }
 }
