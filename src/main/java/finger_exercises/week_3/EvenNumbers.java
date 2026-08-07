@@ -6,7 +6,7 @@ public class EvenNumbers {
     public static void main(String[] args) {
        Scanner myScanner = new Scanner(System.in);
 
-       System.out.println("Digite um número inteiro: ");
+       System.out.println("Enter an integer: ");
        int number = Integer.parseInt(myScanner.nextLine());
 
        for (int i=1; i<=number; i++) {

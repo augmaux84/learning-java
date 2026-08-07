@@ -9,7 +9,7 @@ public class CorrectPassword {
 
         String password = "";
         do {
-            System.out.println("Senha: ");
+            System.out.println("Password: ");
             password = myScanner.nextLine();
 
         } while (!password.equalsIgnoreCase("java"));
