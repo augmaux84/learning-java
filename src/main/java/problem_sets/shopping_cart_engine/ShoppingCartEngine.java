@@ -32,7 +32,7 @@ public class ShoppingCartEngine {
             }
 
             System.out.println("\n1. Add Product");
-            System.out.println("2. Complete Purchase"); // and what if there are no products in the cart?
+            System.out.println("2. Complete Purchase");
             System.out.println("3. Exit");
 
             int index = Integer.parseInt(myObj.nextLine().trim());
@@ -42,7 +42,7 @@ public class ShoppingCartEngine {
 
                 int productId = Integer.parseInt(myObj.nextLine().trim()) - 1;
 
-                if (productId < 0 || productId > 5) {
+                if (productId < 0 || productId > products.length - 1) {
                     System.out.println("Invalid Data");
                     wait(1);
                     continue;
@@ -60,19 +60,23 @@ public class ShoppingCartEngine {
                 }
 
             } else if (index == 2) {
-                // then: forEach
-                double counter = 0;
-                for (int i = 0; i < arrayListPrices.size(); i++) {
-                    counter = counter + arrayListPrices.get(i);
-                }
 
-                // final receipt - use 2x, 3x, etc
-                for (int i = 0; i < arrayListProducts.size(); i++) {
-                    System.out.printf("\n%s - $%.2f\n", arrayListProducts.get(i), arrayListPrices.get(i));
-                }
+                if (arrayListProducts.isEmpty()) {
+                    System.out.println("The cart is empty.");
+                    continue;
+                } else {
+                    double counter = 0;
+                    for (Double productPrice : arrayListPrices) {
+                        counter = counter + productPrice;
+                    }
 
-                System.out.println("Total: $" + counter);
-                wait(3);
+                    for (int i = 0; i < arrayListProducts.size(); i++) {
+                        System.out.printf("\n%s - $%.2f\n", arrayListProducts.get(i), arrayListPrices.get(i));
+                    }
+
+                    System.out.println("Total: $" + counter);
+                    wait(3);
+                }
             } else if (index == 3) {
                 break;
             } else {
