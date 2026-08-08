@@ -16,26 +16,42 @@ public class ShoppingCartEngine {
 
         // menu
         while (true) {
-            System.out.println("--- MERCADO LIVRE ---");
-            System.out.println("1. Add Product");
-            // System.out.println("2. Complete Purchase"); // start new purchase? or exit?
-            System.out.println("2. Exit");
+            System.out.println("\n--- MERCADO LIVRE ---\n");
 
-            int index = Integer.parseInt(myObj.nextLine());
+            for (int i = 0; i < products.length; i++) {
+                System.out.printf("%d. %s - Price: $%.2f - Stock: %d\n", i + 1, products[i], price[i], stock[i]);
+            }
+
+            System.out.println("\n1. Add Product");
+            System.out.println("2. Complete Purchase"); // and what if there are no products in the cart?
+            System.out.println("3. Exit");
+
+            int index = Integer.parseInt(myObj.nextLine().trim());
 
             if (index == 1) {
-                for (int i = 0; i < products.length; i++) {
-                    System.out.printf("%d. %s - Price: $%.2f - Stock: %d\n", i+1, products[i], price[i], stock[i]);
+                System.out.println("Product Index [Integer]: ");
+                int productId = Integer.parseInt(myObj.nextLine().trim()) - 1;
+
+                arrayListProducts.add(products[productId]);
+                arrayListPrices.add(price[productId]);
+                stock[productId] = stock[productId] - 1;
+
+                System.out.printf("%s added.", products[productId]);
+            } else if (index == 2) {
+                // then: forEach
+                double counter = 0;
+                for (int i = 0; i < arrayListPrices.size(); i++) {
+                    counter = counter + arrayListPrices.get(i);
                 }
 
-                // while? do-while? refactor
-                System.out.println("1. Add Product");
+                // final receipt - use 2x, 3x, etc
+                for (int i = 0; i < arrayListProducts.size(); i++) {
+                    System.out.printf("\n%s - $%.2f\n", arrayListProducts.get(i), arrayListPrices.get(i));
+                }
 
-
-            } else if (index == 2) {
+                System.out.println("Total: $" + counter);
+            } else if (index == 3) {
                 break;
-            } else {
-                System.out.println("Invalid Data.");
             }
         }
     }
