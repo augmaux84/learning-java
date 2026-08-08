@@ -2,8 +2,17 @@ package problem_sets.shopping_cart_engine;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class ShoppingCartEngine {
+    public static void wait(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);}
+        catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     public static void main(String[] args) {
         Scanner myObj = new Scanner(System.in);
 
@@ -30,13 +39,26 @@ public class ShoppingCartEngine {
 
             if (index == 1) {
                 System.out.println("Product Index [Integer]: ");
+
                 int productId = Integer.parseInt(myObj.nextLine().trim()) - 1;
 
-                arrayListProducts.add(products[productId]);
-                arrayListPrices.add(price[productId]);
-                stock[productId] = stock[productId] - 1;
+                if (productId < 0 || productId > 5) {
+                    System.out.println("Invalid Data");
+                    wait(1);
+                    continue;
+                } else if (stock[productId] == 0) {
+                  System.out.println("Out of stock for this product");
+                    wait(1);
+                    continue;
+                } else {
+                    arrayListProducts.add(products[productId]);
+                    arrayListPrices.add(price[productId]);
+                    stock[productId] = stock[productId] - 1;
 
-                System.out.printf("%s added.", products[productId]);
+                    System.out.printf("%s added.", products[productId]);
+                    wait(1);
+                }
+
             } else if (index == 2) {
                 // then: forEach
                 double counter = 0;
@@ -50,8 +72,12 @@ public class ShoppingCartEngine {
                 }
 
                 System.out.println("Total: $" + counter);
+                wait(3);
             } else if (index == 3) {
                 break;
+            } else {
+                System.out.println("Invalid Data.");
+                wait(1);
             }
         }
     }
