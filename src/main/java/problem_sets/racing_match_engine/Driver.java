@@ -13,12 +13,12 @@ public class Driver {
         this.isAvailable = isAvailable;
     }
 
-//    public static void acceptRide(Driver driver) {
-//        if (driver.isAvailable) {
-//            driver.isAvailable = false;
-//            System.out.printf("%s accepted the ride on the %s", driver.name, driver.carModel);
-//        } else {
-//            System.out.printf("The %s driver is not available.", driver.name);
-//        }
-//    }
+    public static void acceptRide(Driver driver) {
+        if (driver.isAvailable) {
+            driver.isAvailable = false;
+            System.out.printf("%s accepted the ride on the %s", driver.name, driver.carModel);
+        } else {
+            System.out.printf("The %s driver is not available.", driver.name);
+        }
+    }
 }
