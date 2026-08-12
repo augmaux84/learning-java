@@ -24,11 +24,20 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
-        this.balance = this.balance + amount;
+        if (amount <= 0) {
+            System.out.println("Invalid Data.");
+        } else {
+            this.balance = this.balance + amount;
+
+        }
     }
 
     public void withdraw(double amount) {
-        this.balance = this.balance - amount;
+        if (amount > this.balance) {
+            System.out.println("Insufficient balance.");
+        } else {
+            this.balance = this.balance - amount;
+        }
     }
 
 }
