@@ -1,4 +1,4 @@
-package finger_exercises.week_7;
+package finger_exercises.week_7.finger_exercise_1;
 
 public class Main {
     public static void main(String[] args) {
