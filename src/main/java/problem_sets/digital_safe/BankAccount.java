@@ -33,8 +33,8 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
-        if (amount > this.balance) {
-            System.out.println("Insufficient balance.");
+        if (amount > this.balance || amount <= 0) {
+            System.out.println("Insufficient balance or invalid data.");
         } else {
             this.balance = this.balance - amount;
         }
