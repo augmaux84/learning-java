@@ -12,7 +12,7 @@ public class CreditCardPayment extends AbstractPayment{
 
     @Override
     public boolean validate() {
-        if ((this.cardNumber != null && this.cardNumber.length() == 16) && (this.amount <= this.cardLimit)) {
+        if ((this.cardNumber != null && this.cardNumber.length() == 16) && (amount != 0 && this.amount <= this.cardLimit)) {
             return true;
         } else {
             return false;

@@ -4,16 +4,18 @@ import java.util.ArrayList;
 
 public class MercadoPagoApp {
     public static void main(String[] args) {
-        PixPayment pixPayment = new PixPayment("TX-1001", 1, "7b9e4a2c-1f8d-4e3b-9a0c-2f5d8e1b3a4f");
-
-        CreditCardPayment creditCardPayment = new CreditCardPayment("TX-1002", 50.2, "4756291038475621", 15000);
-
-        BoletoPayment boletoPayment = new BoletoPayment("TX-1003", 30, "34191790010435100479100184310005191026054000001");
+        PixPayment p1 = new PixPayment("TX-001", 150.00, "12345678901234567890123456789012");
+        PixPayment p2 = new PixPayment("TX-002", 50.00, "12345");
+        CreditCardPayment c1 = new CreditCardPayment("TX-003", 2000.00, "1234567890123456", 5000.00);
+        CreditCardPayment c2 = new CreditCardPayment("TX-004", 6000.00, "1234567890123456", 5000.00);
+        BoletoPayment b1 = new BoletoPayment("TX-005", -10.00, "12345678901234567890123456789012345678901234567");
 
         ArrayList<AbstractPayment> arrayList = new ArrayList<>();
-        arrayList.add(pixPayment);
-        arrayList.add(creditCardPayment);
-        arrayList.add(boletoPayment);
+        arrayList.add(p1);
+        arrayList.add(p2);
+        arrayList.add(c1);
+        arrayList.add(c2);
+        arrayList.add(b1);
 
         for (AbstractPayment list : arrayList) {
             list.processTransaction();

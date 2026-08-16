@@ -7,7 +7,12 @@ public abstract class AbstractPayment implements IPayable{
 
     public AbstractPayment(String transactionId, double amount) {
         this.transactionId = transactionId;
-        this.amount = amount;
+
+        if (amount > 0) {
+            this.amount = amount;
+        } else {
+            this.amount = 0;
+        }
     }
 
     protected abstract boolean validate();

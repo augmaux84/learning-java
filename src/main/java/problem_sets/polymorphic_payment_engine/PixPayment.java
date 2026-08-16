@@ -10,7 +10,7 @@ public class PixPayment extends AbstractPayment{
 
     @Override
     public boolean validate() {
-        if (this.pixKey != null && this.pixKey.length() == 32) {
+        if (this.pixKey != null && this.pixKey.length() == 32 && amount != 0) {
             return true;
         } else {
             return false;

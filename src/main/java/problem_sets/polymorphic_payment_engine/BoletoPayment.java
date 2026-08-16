@@ -10,7 +10,7 @@ public class BoletoPayment extends AbstractPayment{
 
     @Override
     public boolean validate() {
-        if (barcode != null && barcode.length() == 47) {
+        if (barcode != null && barcode.length() == 47 && amount != 0) {
             return true;
         } else {
             return false;
