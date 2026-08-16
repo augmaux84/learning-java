@@ -12,6 +12,7 @@ public abstract class AbstractPayment implements IPayable{
             this.amount = amount;
         } else {
             this.amount = 0;
+            this.status = "FAILED";
         }
     }
 
