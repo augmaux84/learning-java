@@ -2,11 +2,17 @@ package finger_exercises.week_8;
 
 import java.util.Scanner;
 
-public class InvalidAgeException {
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
 
-    static void checkAge(int age) throws IllegalArgumentException {
+public class Main {
+
+    static void checkAge(int age) throws InvalidAgeException {
         if (age < 0 || age > 120) {
-            throw new IllegalArgumentException("Invalid Age.");
+            throw new InvalidAgeException("Invalid Age.");
         }
         System.out.println("Valid Age.");
     }
@@ -18,7 +24,7 @@ public class InvalidAgeException {
 
         try {
             checkAge(age);
-        } catch (IllegalArgumentException e) {
+        } catch (InvalidAgeException e) {
             System.out.println(e.getMessage());
         }
         myObj.close();
