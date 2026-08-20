@@ -8,7 +8,7 @@ public class InventoryManager {
             throw new OutOfStockException("Error: Insufficient stock. Available units: " + product.getStockQuantity());
         } else {
             product.deductStock(quantity);
-            System.out.printf("Purchase of product %s approved! New stock: %d", product.getName(), product.getStockQuantity());
+            System.out.printf("Purchase of product %s approved! New stock: %d\n", product.getName(), product.getStockQuantity());
         }
     }
 }
