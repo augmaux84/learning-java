@@ -10,6 +10,6 @@ public class SecondCalculatorTest {
 
     @Test
     public void testDouble() {
-        assertEquals(4, doubleNumbers(2));
+        assertEquals(14, doubleNumbers(7));
     }
 }
